@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   menuItem: {
@@ -21,7 +22,7 @@ export default function Links() {
         return (
           <Grid item xs={0}>
             <Typography className={classes.menuItem} color="inherit">
-              {text}
+            <Link style={{textDecoration: 'none', color: 'white'}} to={`/${text.toLowerCase()}`}>{text}</Link>
             </Typography>
           </Grid>
         );

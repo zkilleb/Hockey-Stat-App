@@ -4,6 +4,7 @@ import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import TeamSelect from './components/TeamSelect';
+import TeamDetail from './components/TeamDetail';
 import Notfound from './notfound';
 import Banner from './components/AppBar/banner';
 import * as serviceWorker from './serviceWorker';
@@ -14,6 +15,7 @@ const routing = (
         <Switch>
             <Route exact path="/" component={App}/>
             <Route path="/teams" component={TeamSelect}/>
+            <Route path="/teamdetail" component={TeamDetail}/>
             <Route component={Notfound}/>
         </Switch>
     </Router>

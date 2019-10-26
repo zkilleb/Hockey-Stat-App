@@ -1,10 +1,8 @@
-const baseURL = "statsapi.web.nhl.com/api/vi";
-
 const endpoints = {
-    teams: `${baseURL}/teams`,
-    divisions: `${baseURL}/divisons`,
-    conferences: `${baseURL}/conferences`,
-    people: `${baseURL}/people`
+    teams: `/teams`,
+    divisions: `$/divisons`,
+    conferences: `/conferences`,
+    people: `/people`
 }
 
 const currTeamIDs = [

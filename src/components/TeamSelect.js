@@ -5,7 +5,7 @@ import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import player from "../img/player.png";
 
-const sortedTeams = currTeamIDs.sort((a, b) => (a.name > b.name) ? 1 : -1)
+const sortedTeams = currTeamIDs.sort((a, b) => (a.name > b.name ? 1 : -1));
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -31,7 +31,11 @@ export default function TeamSelect() {
     items.push(
       <Grid item xs={6} sm={2}>
         <Paper className={classes.root}>
-          <img width="30" height="30" src={player} />
+          <img
+            width="30"
+            height="30"
+            src={require(`../img/teamLogos/${element.name.toLowerCase().replace(/ /g,"_")}.png`)}
+          />
           {element.name}
         </Paper>
       </Grid>

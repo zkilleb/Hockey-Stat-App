@@ -7,22 +7,15 @@ import { Link } from "react-router-dom";
 
 const sortedTeams = currTeamIDs.sort((a, b) => (a.name > b.name ? 1 : -1));
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   root: {
-    padding: theme.spacing(3, 2),
-    marginTop: 5,
-    marginLeft: 5,
-    marginRight: 5,
-    backgroundColor: "#D0D0D0"
+    width: '100%',
+    overflowX: 'auto',
   },
-  menuItem: {
-    textAlign: "center",
-    color: "white"
+  table: {
+    minWidth: 650,
   },
-  outerPaper: {
-    marginTop: 10
-  }
-}));
+});
 
 export default function TeamSelect() {
   const classes = useStyles();
@@ -36,6 +29,7 @@ export default function TeamSelect() {
         >
           <Paper className={classes.root}>
             <img
+              alt={element.name}
               width="30"
               height="30"
               src={require(`../img/teamLogos/${element.name

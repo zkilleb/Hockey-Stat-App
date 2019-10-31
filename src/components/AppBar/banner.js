@@ -1,6 +1,7 @@
 import React from "react";
 import Links from "./links";
 import { makeStyles } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
@@ -25,15 +26,17 @@ export default function Banner() {
     <div className={classes.root}>
       <AppBar className={classes.appBar} position="static">
         <Toolbar>
+          <Link to={`/`}>
             <IconButton
               edge="start"
               className={classes.menuButton}
               color="inherit"
               aria-label="menu"
             >
-              <img height="30" width="30" src={nhlLogo} alt={"NHL Logo"}/>
+              <img height="30" width="30" src={nhlLogo} alt={"NHL Logo"} />
             </IconButton>
-           <Links/>
+          </Link>
+          <Links />
         </Toolbar>
       </AppBar>
     </div>

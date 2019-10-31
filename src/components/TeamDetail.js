@@ -32,6 +32,7 @@ export default class TeamDetail extends React.Component {
     const translatedParams = translateParams(window.location.search);
     API.get(`${endpoints.teams}/${translatedParams}?expand=team.roster`).then(
       res => {
+        roster.push(...res.data.teams[0].roster.roster);
         this.setState({
           name: res.data.teams[0].teamName,
           conf: res.data.teams[0].conference.name,
@@ -42,7 +43,6 @@ export default class TeamDetail extends React.Component {
           city: res.data.teams[0].venue.city,
           venueName: res.data.teams[0].venue.name
         });
-        roster.push(...res.data.teams[0].roster.roster);
       }
     );
   }

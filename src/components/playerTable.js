@@ -17,10 +17,10 @@ const useStyles = makeStyles({
   }
 });
 
-export default function PlayerTable(props) {
+export default function PlayerTable({players}) {
   const classes = useStyles();
   let items = [];
-  props.players.forEach(player => {
+  players.forEach(player => {
     items.push(
       <TableRow>
         <TableCell component="th" scope="row">
@@ -30,7 +30,7 @@ export default function PlayerTable(props) {
         <TableCell align="right">{player.position.abbreviation}</TableCell>
       </TableRow>
     );
-  });
+ });
 
   return (
     <Paper className={classes.root}>

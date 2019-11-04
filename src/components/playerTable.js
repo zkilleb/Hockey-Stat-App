@@ -6,6 +6,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import {formatBirthdate, formatBirthplace } from "../util/util";
 
 const useStyles = makeStyles({
   root: {
@@ -17,20 +18,26 @@ const useStyles = makeStyles({
   }
 });
 
-export default function PlayerTable({players}) {
+export default function PlayerTable({ players }) {
   const classes = useStyles();
   let items = [];
-  players.forEach(player => {
+  const alphaPlayers = players.sort((a, b) => (a.person.lastName > b.person.lastName ? 1 : -1));
+  alphaPlayers.forEach(player => {
     items.push(
       <TableRow>
         <TableCell component="th" scope="row">
           {player.person.fullName}
         </TableCell>
-        <TableCell align="right">{player.jerseyNumber}</TableCell>
-        <TableCell align="right">{player.position.abbreviation}</TableCell>
+        <TableCell>{player.jerseyNumber}</TableCell>
+        <TableCell>{player.position.abbreviation}</TableCell>
+        <TableCell>{formatBirthdate(player.person.birthDate)}</TableCell>
+        <TableCell>{player.person.currentAge}</TableCell>
+        <TableCell>{player.person.height}</TableCell>
+        <TableCell>{player.person.weight}</TableCell>
+        <TableCell>{formatBirthplace(player.person)}</TableCell>
       </TableRow>
     );
- });
+  });
 
   return (
     <Paper className={classes.root}>
@@ -38,8 +45,13 @@ export default function PlayerTable({players}) {
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
-            <TableCell align="right">Number</TableCell>
-            <TableCell align="right">Position</TableCell>
+            <TableCell>Number</TableCell>
+            <TableCell>Position</TableCell>
+            <TableCell>Birthdate</TableCell>
+            <TableCell>Age</TableCell>
+            <TableCell>Height</TableCell>
+            <TableCell>Weight (lbs)</TableCell>
+            <TableCell>Birthplace</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>{items}</TableBody>

@@ -18,20 +18,25 @@ const useStyles = makeStyles(theme => ({
     marginTop: 30,
     maxWidth: 345,
     align: "center"
-  },
+  }
 }));
 
 function App() {
   const classes = useStyles();
   return (
-      <Paper className={classes.root}>
-        <Typography className={classes.header} variant="h3" component="h3">
-          Welcome!
-        </Typography>
-        <Typography className={classes.header} style={{marginTop: 30}} component="p">
-          This is an application for hockey stats. More information and stuff will go here later.
-        </Typography>
-      </Paper>
+    <Paper className={classes.root}>
+      <Typography className={classes.header} variant="h3" component="h3">
+        Welcome!
+      </Typography>
+      <Typography
+        className={classes.header}
+        style={{ marginTop: 30 }}
+        component="p"
+      >
+        This is an application for hockey stats. More information and stuff will
+        go here later.
+      </Typography>
+    </Paper>
   );
 }
 

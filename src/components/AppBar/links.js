@@ -22,7 +22,12 @@ export default function Links() {
         return (
           <Grid item xs={0}>
             <Typography className={classes.menuItem} color="inherit">
-            <Link style={{textDecoration: 'none', color: 'white'}} to={`/${text.toLowerCase()}`}>{text}</Link>
+              <Link
+                style={{ textDecoration: "none", color: "white" }}
+                to={`/${text.toLowerCase()}`}
+              >
+                {text}
+              </Link>
             </Typography>
           </Grid>
         );

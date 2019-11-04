@@ -30,27 +30,32 @@ export default class TeamDetail extends React.Component {
   }
   componentDidMount() {
     const translatedParams = translateParams(window.location.search);
-    API.get(`${endpoints.teams}/${translatedParams}?expand=team.roster`).then(
-      res => {
-        roster.push(...res.data.teams[0].roster.roster);
-        this.setState({
-          name: res.data.teams[0].teamName,
-          conf: res.data.teams[0].conference.name,
-          div: res.data.teams[0].division.name,
-          loc: res.data.teams[0].locationName,
-          site: res.data.teams[0].officialSiteUrl,
-          firstYear: res.data.teams[0].firstYearOfPlay,
-          city: res.data.teams[0].venue.city,
-          venueName: res.data.teams[0].venue.name
-        });
-      }
-    );
+    API.get(
+      `${endpoints.teams}/${translatedParams}?expand=team.roster,roster.person`
+    ).then(res => {
+      roster.push(...res.data.teams[0].roster.roster);
+      this.setState({
+        name: res.data.teams[0].teamName,
+        conf: res.data.teams[0].conference.name,
+        div: res.data.teams[0].division.name,
+        loc: res.data.teams[0].locationName,
+        site: res.data.teams[0].officialSiteUrl,
+        firstYear: res.data.teams[0].firstYearOfPlay,
+        city: res.data.teams[0].venue.city,
+        venueName: res.data.teams[0].venue.name
+      });
+    });
   }
 
   render() {
     //const classes = useStyles();
     return (
       <div>
+        <img width="50"
+              height="50"
+              src={require(`../img/teamLogos/${window.location.search
+                .toLowerCase()
+                .substring(1, window.location.search.length).replace(/%20/g, "_")}.png`)}></img>
         <div>Name: {this.state.name}</div>
         <div>Conference: {this.state.conf}</div>
         <div>Division: {this.state.div}</div>

@@ -14,7 +14,8 @@ const useStyles = makeStyles({
     overflowX: "auto"
   },
   table: {
-    minWidth: 650
+    minWidth: 650,
+    maxWidth: 700
   }
 });
 

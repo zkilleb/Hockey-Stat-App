@@ -3,6 +3,7 @@ import { endpoints, currTeamIDs } from "../api/endpoints";
 import API from "../api/API";
 import { Link } from "react-router-dom";
 import PlayerTable from "./playerTable";
+import Grid from "@material-ui/core/Grid";
 
 let roster = [];
 
@@ -36,6 +37,7 @@ export default class TeamDetail extends React.Component {
       roster.push(...res.data.teams[0].roster.roster);
       this.setState({
         name: res.data.teams[0].teamName,
+        fullName: res.data.teams[0].name,
         conf: res.data.teams[0].conference.name,
         div: res.data.teams[0].division.name,
         loc: res.data.teams[0].locationName,
@@ -50,24 +52,28 @@ export default class TeamDetail extends React.Component {
   render() {
     //const classes = useStyles();
     return (
-      <div>
+      <Grid container spacing={1}>
+        <Grid item xs={4}>
         <img width="50"
               height="50"
               src={require(`../img/teamLogos/${window.location.search
                 .toLowerCase()
                 .substring(1, window.location.search.length).replace(/%20/g, "_")}.png`)}></img>
-        <div>Name: {this.state.name}</div>
+        <div>{this.state.fullName}</div>
         <div>Conference: {this.state.conf}</div>
         <div>Division: {this.state.div}</div>
         <div>Location: {this.state.loc}</div>
-        <div>
-          <Link to={this.state.site}>Website</Link>
-        </div>
         <div>First Year of Play: {this.state.firstYear}</div>
         <div>City: {this.state.city}</div>
         <div>Venue Name: {this.state.venueName}</div>
+        <div>
+          <Link to={this.state.site}>Website</Link>
+        </div>
+        </Grid>
+        <Grid item xs={7}>
         <PlayerTable players={roster} />
-      </div>
+        </Grid>
+      </Grid>
     );
   }
 }
